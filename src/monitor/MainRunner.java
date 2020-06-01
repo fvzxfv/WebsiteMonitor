@@ -151,6 +151,7 @@ public class MainRunner {
 			responseTime = System.currentTimeMillis() - currentTime;
 			availability = true;
 			
+			// HTTP response code only represent successful connection if it is in [200, 399]
 			if (responseCode < 200 || responseCode > 399) {
 				responseTime = 0;
 				availability = false;

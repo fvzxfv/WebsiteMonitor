@@ -29,6 +29,7 @@ public class WebRequestData {
 	
 	List<ResponseDataInfo> responseTimeList;
 	
+	// Hashmap is used to reduce counting time
 	List<ResponseDataInfo> responseCodeList;
 	Map<Integer, Integer> responseCodeCount;
 	
@@ -68,7 +69,7 @@ public class WebRequestData {
 		
 		updateResponseTime(responseTime, currentTime);
 		
-		updateresponseCode(responseCode, currentTime);
+		updateResponseCode(responseCode, currentTime);
 		
 		// If time has passed the first alerting check interval, then it's ready for check available state
 		if (this.availabilityList.get(this.availabilityList.size() - 1).timeLineInfo - this.availabilityList.get(0).timeLineInfo >= ALERT_CHECK_INTERVAL) {
@@ -120,7 +121,7 @@ public class WebRequestData {
 	 * @param responseCode Response code for this request
 	 * @param currentTime Time point for this request
 	 */
-	private void updateresponseCode(int responseCode, double currentTime) {
+	private void updateResponseCode(int responseCode, double currentTime) {
 		this.responseCodeList.add(new ResponseDataInfo<Integer>(responseCode, currentTime));
 		this.responseCodeCount.put(responseCode, this.responseCodeCount.getOrDefault(responseCode, 0) + 1);
 		
