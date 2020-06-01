@@ -5,9 +5,9 @@ Website availability &amp; performance monitor
 Use "Run As JUnit Test" to test Alerting logic
 
 ## Improvement so far
-- Use user input website and interval instead of inside-code and pre-defined data
+- Used user input website and interval instead of inside-code and pre-defined data
 - Defined special generic type to store and print data and corresponding timeline info
-- Most of method and class are generalizable and its logic and be used universally
+- Most methods and classes are generalizable and their logic are universal
 
 ## Potential improvement
 MainRunner: 
