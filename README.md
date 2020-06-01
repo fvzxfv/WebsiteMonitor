@@ -16,7 +16,7 @@ MainRunner:
 - Will distinguish whether the check interval is the interval "after response and before next request" or "between adjacent request"
 
 WebRequestData: 
-- Add separate lists to store data for shorter interval instead of tracing data from whole lists, reduce code complexity (although won't reduce neither of time or space)
+- Add separate lists to store data for shorter interval instead of tracing data from whole lists, reduce code complexity (although won't reduce neither time nor space)
 - Should considering split this class into different class to reduce complexity
 
 Printer:
