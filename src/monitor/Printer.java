@@ -70,7 +70,7 @@ public class Printer {
 	 */
 	private void printShortInfo(Set<WebRequestData> webRequestDataSet) {
 		System.out.println("\n\n\n" + "############################################################################");
-		System.out.println("Metrics for last " + SHORT_DISPLAY_INTERVAL / 1000 + "s. ");
+		System.out.println("Metrics for last " + SHORT_TRACE_INTERVAL / 1000 / 60 + " minutes. ");
 		for (WebRequestData data : webRequestDataSet) {
 			PrintInfo printInfo = data.getShortPrintInfo();
 			printMetrics(printInfo);
@@ -83,7 +83,7 @@ public class Printer {
 	 */
 	private void printLongInfo(Set<WebRequestData> webRequestDataSet) {
 		System.out.println("\n" + "############################################################################");
-		System.out.println("Metrics for last " + LONG_DISPLAY_INTERVAL / 1000 + "s. ");
+		System.out.println("Metrics for last " + LONG_TRACE_INTERVAL / 1000 / 60 + " minutes. ");
 		for (WebRequestData data : webRequestDataSet) {
 			PrintInfo printInfo = data.getPrintInfo();
 			printMetrics(printInfo);

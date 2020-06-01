@@ -1,6 +1,5 @@
 package monitor;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -59,7 +58,7 @@ public class MainRunner {
 			}
 			
 			// Add current website to set if valid
-			if (webData.url == null || webData.url.toString() != "") {
+			if (webData.url != null || webData.url.toString() != "" || webData.interval != 0) {
 				webRequestDataSet.add(webData);
 			}
 			
@@ -100,7 +99,7 @@ public class MainRunner {
 	 */
 	private static boolean isValidData(String[] rawInputSplit) {
 		try {
-			String validtor = new BigDecimal(rawInputSplit[1]).toString();
+			new BigDecimal(rawInputSplit[1]).toString();
 		} catch (Exception e) {
 			return false;
 		}
@@ -111,7 +110,7 @@ public class MainRunner {
 	 * Each time this method is called, a new thread will start to monitor a website
 	 * @param webData Website needed to be monitored with corresponding data
 	 */
-	private static void monitor(WebRequestData webData) {
+	public static void monitor(WebRequestData webData) {
 		Runnable runnable = new Runnable() {
 			
 			@Override

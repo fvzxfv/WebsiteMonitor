@@ -32,10 +32,21 @@ public class WebRequestData {
 	List<ResponseDataInfo> responseCodeList;
 	Map<Integer, Integer> responseCodeCount;
 	
-	List<String> alertingMessageList;
-	boolean availabilityForAltering;
+	public List<String> alertingMessageList;
+	public boolean availabilityForAltering;
 	
 	public WebRequestData() {
+		this.availabilityList = new ArrayList<ResponseDataInfo>();
+		this.responseTimeList = new ArrayList<ResponseDataInfo>();
+		this.responseCodeList = new ArrayList<ResponseDataInfo>();
+		this.responseCodeCount = new HashMap<Integer, Integer>();
+		this.alertingMessageList = new ArrayList<String>();
+		this.availabilityForAltering = true;
+	}
+	
+	public WebRequestData(URL url, double interval) {
+		this.url = url;
+		this.interval = interval;
 		this.availabilityList = new ArrayList<ResponseDataInfo>();
 		this.responseTimeList = new ArrayList<ResponseDataInfo>();
 		this.responseCodeList = new ArrayList<ResponseDataInfo>();
@@ -69,7 +80,7 @@ public class WebRequestData {
 	 * Method to check whether to send an alerting
 	 * @param currentTime Availability updated time
 	 */
-	private void checkAlerting(double currentTime) {
+	public void checkAlerting(double currentTime) {
 		// Calculate availability in given interval
 		int index = this.availabilityList.size() - 1, trueCount = 0, availablityWithinInterval = 0;
 		for (; index >= 0; index--) {
