@@ -48,12 +48,17 @@ public class Printer {
 
 			@Override
 			public void run() {
+				// Add 100ms delay for threadLong to wait in case two thread print at same time
+				double timeGap = 100;
+				
 				while(true) {
 					try {
-						Thread.sleep((long) LONG_DISPLAY_INTERVAL + 100); 
+						Thread.sleep((long) (LONG_DISPLAY_INTERVAL + timeGap));
 					} catch(InterruptedException e) {
 						e.printStackTrace();
 					}
+					// Restore gap to 0 to prevent this gap grows
+					timeGap = 0;
 					
 					printLongInfo(webRequestDataSet);
 				}
@@ -107,7 +112,7 @@ public class Printer {
 		}
 		
 		// Print down and resume history if any
-		System.out.println("Down and resume history: " + (printInfo.alertingMessages.size() == 0 ? "None. " : ""));
+		System.out.println("Down and resume history: " + (printInfo.alertingMessages.size() == 0 ? "None" : ""));
 		for (String message : printInfo.alertingMessages) {
 			System.out.println(message);
 		}

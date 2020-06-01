@@ -11,8 +11,8 @@ class AlertingTest {
 		WebRequestData testGoogle = new WebRequestData(new URL("http://www.google.com"), 1000);
 		WebRequestData testFailure = new WebRequestData(new URL("http://FailureWebsite"), 1000);
 		
-		MainRunner.monitor(testGoogle);
-		MainRunner.monitor(testFailure);
+		new Monitor().monitor(testGoogle);
+		new Monitor().monitor(testFailure);
 		
 		// Test after the first two minutes
 		Thread.sleep(1000 * 60 * 3);
