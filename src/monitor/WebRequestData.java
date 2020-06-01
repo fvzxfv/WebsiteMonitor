@@ -85,11 +85,11 @@ public class WebRequestData {
 		// Calculate availability in given interval
 		int index = this.availabilityList.size() - 1, trueCount = 0, availablityWithinInterval = 0;
 		for (; index >= 0; index--) {
-			if (this.availabilityList.get(index).data.equals(true)) {
-				trueCount++;
-			}
 			if (this.availabilityList.get(index).timeLineInfo > this.availabilityList.get(this.availabilityList.size() - 1).timeLineInfo - ALERT_CHECK_INTERVAL) {
 				availablityWithinInterval++;
+				if (this.availabilityList.get(index).data.equals(true)) {
+					trueCount++;
+				}
 			}
 		}
 		double availabilityRate = availablityWithinInterval == 0 ? 0 : trueCount / availablityWithinInterval;
