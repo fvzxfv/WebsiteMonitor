@@ -24,3 +24,6 @@ Printer:
 
 Test: 
 - Consider more boundary case regarding multiple thread
+
+results :
+you will get  any color of ur wish
